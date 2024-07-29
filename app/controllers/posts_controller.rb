@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @subjects = Subject.all
+    @tags = Tag.all
   end
 
   def show

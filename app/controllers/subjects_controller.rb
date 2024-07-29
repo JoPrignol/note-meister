@@ -6,16 +6,20 @@ class SubjectsController < ApplicationController
 
   def show
     @subject = Subject.find(params[:id])
+    @posts = @subject.posts
+    @subjects = Subject.all
   end
 
   def new
     @subject = Subject.new
+    @subjects = Subject.all
   end
 
   def create
     @subject = Subject.new(subject_params)
+    @subjects = Subject.all
     if @subject.save
-      redirect_to subjects_path
+      redirect_to root_path
     else
       render :new
     end
@@ -23,10 +27,12 @@ class SubjectsController < ApplicationController
 
   def edit
     @subject = Subject.find(params[:id])
+    @subjects = Subject.all
   end
 
   def update
     @subject = Subject.find(params[:id])
+    @subjects = Subject.all
     if @subject.update(subject_params)
       redirect_to subjects_path
     else
@@ -37,7 +43,7 @@ class SubjectsController < ApplicationController
   def destroy
     @subject = Subject.find(params[:id])
     @subject.destroy
-    redirect_to subjects_path
+    redirect_to root_path
   end
 
   private

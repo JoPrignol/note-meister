@@ -1,5 +1,5 @@
 <%= link_to 'Accueil', root_path %>
 <% @subjects.each do |subject| %>
-  <p><%= subject.name %> <%= link_to "Supprimer", subject, data: {turbo_method: :delete, turbo_confirm: "Êtes vous sur.e?!"}, class: "btn btn-danger mt-3" %></p>
+  <p><%= subject.name %> <%= link_to "Supprimer", subject, data: {turbo_method: :delete, turbo_confirm: "Êtes vous sur.e?!"} %></p>
 <% end %>
 <%= link_to 'Ajouter un tag', new_subject_path %>

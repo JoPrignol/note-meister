@@ -1,4 +1,28 @@
-<%= simple_form_for @subject do |f| %>
-  <%= f.input :name %>
-  <%= f.button :submit %>
-<% end %>
+<div class="container p-4 navbar">
+  <%= link_to root_path do %>
+    <div class="round-button">
+      <i class="fa-solid fa-house fa-xl" style="color: #000000;"></i>
+    </div>
+  <% end %>
+  <% @subjects.each do |subject| %>
+    <div class="tag-display">
+      <%= link_to subject.name, subject_path(subject) %>
+      <%= link_to subject, data: { turbo_method: :delete, turbo_confirm: "Êtes vous sur.e?!" } do %>
+        <i class="fa-solid fa-trash fa-sm" style="color: #000000;"></i>
+      <% end %>
+    </div>
+  <% end %>
+  <%= link_to new_subject_path do %>
+    <div class="round-button">
+      <i class="fa-solid fa-plus fa-xl" style="color: #000000;"></i>
+    </div>
+  <% end %>
+</div>
+<div class="cards-container">
+  <div class="post-card">
+    <%= simple_form_for @subject do |f| %>
+      <%= f.input :name, label: "Titre" %>
+      <%= f.button :submit, "Créer !" %>
+    <% end %>
+  </div>
+</div>

@@ -43,9 +43,10 @@ class TagsController < ApplicationController
   end
 
   def destroy
-    @tag = Tag.find(params[:id])
+    @post = Post.find(params[:post_id])
+    @tag = @post.tags.find(params[:id])
     @tag.destroy
-    redirect_to @post
+    redirect_to posts_path, notice: 'Tag was successfully deleted.'
   end
 
   private
