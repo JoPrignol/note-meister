@@ -1,0 +1,7 @@
+<div class="container w-50 mt-3">
+  <h1>Add a tag</h1>
+  <%= simple_form_for [@post, @tag] do |f| %>
+    <%= f.association :subject %>
+    <%= f.button :submit %>
+  <% end %>
+</div>

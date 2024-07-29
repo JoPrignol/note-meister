@@ -1,0 +1,18 @@
+<% @posts.each do |post| %>
+  <div class="container w-25 p-5">
+    <h2><%= post.title %></h2>
+    <p><%= post.content %></p>
+    <% post.subjects.each do |subject| %>
+      <div><%= subject.name %></div>
+    <% end %>
+    <div class="container"><%= link_to "Supprimer", post, data: {turbo_method: :delete, turbo_confirm: "Êtes vous sur.e?!"}, class: "btn btn-danger mt-3" %> | <%= link_to "Add Tag", new_post_tag_path(post), class: "btn btn-primary" %></div>
+  </div>
+<% end %>
+
+
+
+<%= link_to 'Accueil', root_path %>
+<% @subjects.each do |subject| %>
+  <p><%= subject.name %> <%= link_to "Supprimer", subject, data: {turbo_method: :delete, turbo_confirm: "Êtes vous sur.e?!"}, class: "btn btn-danger mt-3" %></p>
+<% end %>
+<%= link_to 'Ajouter un tag', new_subject_path %>
