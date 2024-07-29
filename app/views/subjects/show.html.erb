@@ -1,0 +1,56 @@
+<div class="container p-4 navbar">
+  <%= link_to root_path do %>
+    <div class="round-button">
+      <i class="fa-solid fa-house fa-xl" style="color: #000000;"></i>
+    </div>
+  <% end %>
+  <% @subjects.each do |subject| %>
+    <div class="tag-display">
+      <%= link_to subject.name, subject_path(subject) %>
+      <%= link_to subject, data: { turbo_method: :delete, turbo_confirm: "Êtes vous sur.e?!" } do %>
+        <i class="fa-solid fa-trash fa-sm" style="color: #000000;"></i>
+      <% end %>
+    </div>
+  <% end %>
+  <%= link_to new_subject_path do %>
+    <div class="round-button">
+      <i class="fa-solid fa-plus fa-xl" style="color: #000000;"></i>
+    </div>
+  <% end %>
+</div>
+
+<div class="cards-container">
+  <% @posts.each do |post| %>
+    <div class="container post-card">
+      <h2><%= post.title %></h2>
+      <p><%= post.content %></p>
+      <div class="subjects-tags-container">
+        <% post.tags.each do |tag| %> <!-- Use post.tags instead of @tags -->
+          <div class="subjects-tags">
+            <%= link_to tag.subject.name, subject_path(tag.subject) %>
+            <%= link_to post_tag_path(tag.post, tag), data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr.e?!" } do %>
+              <i class="fa-solid fa-trash fa-xs" style="color: #000000;"></i>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="actions-card-container">
+        <%= link_to post, data: { turbo_method: :delete, turbo_confirm: "Êtes vous sur.e?!" } do %>
+          <i class="fa-solid fa-trash fa-lg" style="color: #000000;"></i>
+        <% end %>
+        <%= link_to edit_post_path(post) do %>
+          <i class="fa-solid fa-pen-to-square fa-lg" style="color: #000000;"></i>
+        <% end %>
+        <%= link_to new_post_tag_path(post) do %>
+          <i class="fa-solid fa-tag fa-lg" style="color: #000000;"></i>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= link_to new_post_path do %>
+    <div class="round-button">
+      <i class="fa-solid fa-plus fa-xl" style="color: #000000;"></i>
+    </div>
+  <% end %>
+</div>

@@ -2,7 +2,6 @@ source "https://rubygems.org"
 
 ruby "3.1.2"
 
-# My gems
 gem "bootstrap", "~> 5.3.0"
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
